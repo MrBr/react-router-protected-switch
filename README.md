@@ -1,6 +1,10 @@
 # React Router Protected Context
 
-A generic way for protecting/scoping react router routes.
+A generic way for protecting/scoping react router routes with zero dependencies.
+
+## Installation
+
+`yarn add react-router-protected-context`
 
 ## The problem
 
