@@ -1,7 +1,9 @@
 export {
-  RouterProtectedContextConsumer,
-  RouterProtectedContextProvider,
-  RouterProtectedContextProviderProps,
-  RouterProtectedContextValue,
+  SwitchContextConsumer,
+  SwitchContext,
+  switchContext,
+  SwitchContextProps,
+  SwitchContextValue,
+  useSwitchContext,
 } from './context';
 export { default as ProtectedRoute } from './route';

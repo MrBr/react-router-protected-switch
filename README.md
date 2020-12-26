@@ -1,10 +1,10 @@
-# React Router Protected Context
+# React Router Protected Switch
 
 A generic way for protecting/scoping react router routes with zero dependencies.
 
 ## Installation
 
-`yarn add react-router-protected-context`
+`yarn add react-router-protected-switch`
 
 ## The problem
 
@@ -14,20 +14,26 @@ There are few common mistakes done with custom protected routes which this libra
 * Validation can't be scoped to the subtree
 
 ## The solution
-By connecting `Route` with `RouterProtectedContext` we get the new `ProtectedRoute` component which doesn't change the `Route` 
-props interface (remains agnostic about protection; doesn't require any) and still has ability to protected itself from 
-unwanted visits.
+By connecting `Route` with `SwitchContext` we get the new `ProtectedRoute` component which doesn't change the `Route` 
+props interface (remains agnostic regarding protection; doesn't require any) but to redirect unwanted visits.
+
+## API
+* `SwitchContext` - the context provider for the custom switch components
+* `switchContext` - under the hood context
+* `SwitchContextConsumer` - the context consumer for the custom protected routes
+* `useSwitchContext` - useful for creating custom protected routes
+
 
 ## Usage example:
-Validator component:
+Switch component:
 ```
-const AuthValidator = ({ isAuthenticated, children }) => {
+const AuthSwitch = ({ isAuthenticated, children }) => {
   const redirect = !isAuthenticated && '/login';
 
   return (
-    <RouterProtectedContextProvider value={redirect}>
+    <SwitchContext value={redirect}>
       {children}
-    </RouterProtectedContextProvider>
+    </SwitchContext>
   );
 };
 ```
@@ -35,11 +41,11 @@ const AuthValidator = ({ isAuthenticated, children }) => {
 In the Router tree:
 ```
 <Router>
-  <AuthValidator>
-    // Scoped validation - all routes under the AuthValidator are protected 
+  <AuthSwitch>
+    // Scoped validation - all routes under the AuthSwitch are protected 
     <ProtectedRoute component={SafePage} path="/safe-page">
-  </AuthValidator>
-  // Routes outside the validator behave normally
+  </AuthSwitch>
+  // Routes outside the switch behave normally
   <ProtectedRoute component={LoginPage} path="/login">
 </Router>
 ```

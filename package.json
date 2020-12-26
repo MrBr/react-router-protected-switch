@@ -1,7 +1,7 @@
 {
-  "name": "react-router-protected-context",
+  "name": "react-router-protected-switch",
   "version": "1.0.0",
-  "description": "React Router Protected Context",
+  "description": "React Router Protected Switch",
   "main": "build/index.js",
   "files": ["build/**", "package.json", "LICENSE"],
   "scripts": {

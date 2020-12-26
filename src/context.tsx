@@ -1,29 +1,33 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 
-export type RouterProtectedContextValue = null | string;
+export type SwitchContextValue = null | string;
 
-export interface RouterProtectedContextProviderProps {
+export interface SwitchContextProps {
   children: ReactNode;
-  value: RouterProtectedContextValue;
+  value: SwitchContextValue;
 }
 
-const RouterProtectedContext = React.createContext<RouterProtectedContextValue>(
-  null,
-);
+const switchContext = React.createContext<SwitchContextValue>(null);
 
-const RouterProtectedContextProvider = ({
-  children,
-  value,
-}: RouterProtectedContextProviderProps) => (
-  <RouterProtectedContext.Consumer>
+const SwitchContext = ({ children, value }: SwitchContextProps) => (
+  <switchContext.Consumer>
     {parentRedirect => (
-      <RouterProtectedContext.Provider value={parentRedirect || value}>
+      <switchContext.Provider value={parentRedirect || value}>
         {children}
-      </RouterProtectedContext.Provider>
+      </switchContext.Provider>
     )}
-  </RouterProtectedContext.Consumer>
+  </switchContext.Consumer>
 );
 
-const RouterProtectedContextConsumer = RouterProtectedContext.Consumer;
+const SwitchContextConsumer = switchContext.Consumer;
 
-export { RouterProtectedContextProvider, RouterProtectedContextConsumer };
+const useSwitchContext = () => {
+  return useContext(switchContext);
+};
+
+export {
+  SwitchContextConsumer,
+  SwitchContext,
+  switchContext,
+  useSwitchContext,
+};
