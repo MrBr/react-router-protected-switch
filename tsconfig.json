@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "build/",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}

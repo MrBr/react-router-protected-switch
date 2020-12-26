@@ -1,0 +1,27 @@
+{
+  "name": "react-router-protected-context",
+  "version": "1.0.0",
+  "description": "React Router Protected Context",
+  "main": "build/index.js",
+  "files": ["build/**", "package.json", "LICENSE"],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-router"
+  ],
+  "peerDependencies": {
+    "react": ">=16.3",
+    "react-router": ">=4"
+  },
+  "devDependencies": {
+    "@types/react": "*",
+    "@types/react-router": "4",
+    "prettier": "^2.2.1",
+    "typescript": "4.1.3"
+  },
+  "repository": "https://github.com/MrBr/react-router-protected-context",
+  "author": "Luka Bracanovic",
+  "license": "MIT"
+}
