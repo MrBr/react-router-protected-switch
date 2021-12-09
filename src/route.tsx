@@ -3,9 +3,9 @@ import { Redirect, Route, RouteProps } from 'react-router';
 
 import { SwitchContextConsumer } from './context';
 
-const ProtectedRoute = (props: RouteProps) => {
-  const Component = props.component;
-  const render = useCallback(
+const ProtectedRoute = ({ render, component, ...props }: RouteProps) => {
+  const Component = component;
+  const protectedRender = useCallback(
     routeProps => (
       <SwitchContextConsumer>
         {redirect =>
@@ -14,14 +14,14 @@ const ProtectedRoute = (props: RouteProps) => {
           ) : Component ? (
             <Component {...routeProps} />
           ) : (
-            props.render(routeProps)
+            render(routeProps)
           )
         }
       </SwitchContextConsumer>
     ),
-    [props.render, Component],
+    [render, Component],
   );
-  return <Route render={render} {...props} />;
+  return <Route render={protectedRender} {...props} />;
 };
 
 export default ProtectedRoute;

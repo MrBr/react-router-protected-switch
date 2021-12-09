@@ -1,6 +1,6 @@
 {
   "name": "react-router-protected-switch",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "React Router Protected Switch",
   "main": "build/index.js",
   "files": ["build/**", "package.json", "LICENSE"],
